@@ -1,0 +1,11 @@
+genesis {
+  average-block-delay = 60000ms
+  initial-base-target = 999
+  timestamp = 1747859533576
+  block-timestamp = 1747859533576
+  signature = "2SkYGsDwQWUUr6WVLcxU8Fb6kCSSFFDRQJsT3C2NaBaKBM5mAdP5Cz69TPp3AbxfFQAy6EbUsdQMfcbW47hC4XMd"
+  initial-balance = 25000000000000000
+  transactions = [
+    {recipient = "3GmEDDcUGeAfW3i1XzvgGDHjgSSqimP35bN", amount = 25000000000000000}
+  ]
+}
