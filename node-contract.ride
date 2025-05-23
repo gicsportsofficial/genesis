@@ -1,0 +1,16 @@
+{-# STDLIB_VERSION 5 #-}
+{-# CONTENT_TYPE EXPRESSION #-}
+{-# SCRIPT_TYPE ACCOUNT #-}
+let ownerPublicKey = base58'8CfD5sx1KegPmpq6p5FqXq4NLikxu5Y1q33h7GCvgvc6' # coloque aqui a public key de um address externo seu de confiança para somente ele receber e assinar as transações.
+
+match(tx){
+    case t:TransferTransaction => sigVerify(t.bodyBytes, t.proofs[0], ownerPublicKey)
+    case s:SetScriptTransaction => sigVerify(s.bodyBytes, s.proofs[0], ownerPublicKey)
+    case k:BurnTransaction => sigVerify(k.bodyBytes, k.proofs[0], ownerPublicKey)
+    case d:DataTransaction => sigVerify(d.bodyBytes, d.proofs[0], ownerPublicKey)
+    case e:ExchangeTransaction => sigVerify(e.bodyBytes, e.proofs[0], ownerPublicKey)
+    case inv:InvokeScriptTransaction => sigVerify(inv.bodyBytes, inv.proofs[0], ownerPublicKey)
+    case ntx:MassTransferTransaction => sigVerify(ntx.bodyBytes, ntx.proofs[0], ownerPublicKey)
+    case tt:IssueTransaction => sigVerify(tt.bodyBytes, tt.proofs[0], ownerPublicKey)
+    case _ => sigVerify(tx.bodyBytes, tx.proofs[0], tx.senderPublicKey)
+}
